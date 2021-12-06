@@ -10,6 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 0px 15px;
 }
 
 .box_login {
@@ -21,8 +22,8 @@ body {
 }
 
 .box_login .cover {
-    height: 230px;
-    background: url('../img/capa-desktop.jpeg');
+    height: 200px;
+    background: url('../img/capa-mobile.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -38,8 +39,12 @@ h1 {
 form input {
     margin: 0px 20px;
     width: calc(100% - 40px);
-    padding: 5px 10px;
+    padding: 10px 15px;
+    border: 0;
     border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #6D4BFC;
 }
 
 form .btn_login {
@@ -47,4 +52,23 @@ form .btn_login {
     width: calc(100% - 40px);
     background: #3CEB88;
     color: #FFF;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.msg_error {
+    color: #FF6D6D;
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 480px) {
+    .btn_login .capa {
+        height: 230px;
+        background: url('../img/capa-desktop.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
 }
