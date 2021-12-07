@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-</head>
-<body>
-    <div class="box_login">
-        <div class="cover"></div>
-        <h1>Faça seu login</h1>
+<?php
 
-        <form action="">
-            <input type="email" name="e-mail" placeholder="NOME COMPLETO">
-            <input type="password" name="password" placeholder="E-MAIL">
+require_once 'app/core/Core.php';
 
-            <button class="btn_login">LOGAR</button>
-            <span class="msg_error"><i class="fa fa-exclamation-triangle" style="font-size: 16px; color: #FF6D6D; padding-right: 5px;"></i><p>Tentativa Inválida</p></span>
-        </form>
-    </div>
-</body>
-</html>
+$core = new Core;
+$core->start($_GET);
