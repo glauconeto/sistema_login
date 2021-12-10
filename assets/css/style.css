@@ -23,7 +23,7 @@ body {
 
 .box_login .cover {
     height: 200px;
-    background: url('../img/capa-mobile.png');
+    background: url('../img/photo1639167942.jpeg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -67,7 +67,7 @@ form .btn_login {
 @media (min-width: 480px) {
     .btn_login .capa {
         height: 230px;
-        background: url('../img/capa-desktop.png');
+        background: url('../img/capa-mobile.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
     }

@@ -12,4 +12,18 @@ class LoginController
 
         return $template->render();
     }
+
+    public function check()
+    {
+        try {
+            //code...
+            $user = new User;
+            $user->setEmail($_POST['email']);
+            $user->setPassword($_POST['password']);
+            $user->validateLogin();
+        } catch (Exception $e) {
+            //throw $e;
+            header('Location: http://localhost/sistema_login/');
+        }
+    }
 }
