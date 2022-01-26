@@ -1,16 +1,13 @@
 <?php
 
+namespace App\Core;
+
 class Core 
 {
     private $url;
     private $controller;
     private $method = 'index';
     private $params = array();
-
-    public function __construct()
-    {
-        
-    }
 
     public function start($request)
     {

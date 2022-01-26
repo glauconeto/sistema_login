@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controller;
+
+use App\Model\User;
+
 class LoginController
 {
     public function index()
@@ -21,7 +25,7 @@ class LoginController
             $user->setEmail($_POST['email']);
             $user->setPassword($_POST['password']);
             $user->validateLogin();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //throw $e;
             header('Location: http://localhost/sistema_login/');
         }
