@@ -27,7 +27,7 @@ class LoginController
             $user->validateLogin();
         } catch (\Exception $e) {
             //throw $e;
-            header('Location: http://localhost/sistema_login/');
+            header('Location: http://localhost:8000');
         }
     }
 }
