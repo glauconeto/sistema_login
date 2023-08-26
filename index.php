@@ -1,5 +1,7 @@
 <?php
 
-// A Fazer:
+use App\Controller\LoginController;
 
-// Carregar controller principal e renderizar o index
+$login = new LoginController();
+
+$login->index();
