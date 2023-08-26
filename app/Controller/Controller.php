@@ -2,8 +2,15 @@
 
 namespace App\Controller;
 
+/**
+ * Classe abstrata de Controller
+ */
 abstract class Controller
 {
+    /**
+     * Método de renderização que utiliza uma view para 
+     * renderizar como View do sistema
+     */
     protected static function render($view)
     {
         $env = parse_ini_file('.env');

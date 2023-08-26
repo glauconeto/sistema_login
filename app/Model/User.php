@@ -5,6 +5,13 @@ namespace App\Model;
 use App\Database\Connection;
 use PDO;
 
+/**
+ * Model da aplicação
+ *
+ * Aqui vai a regra geral de todo o banco de dados, que irá ser utilizado pelo Controller.
+ *
+ * 
+ */
 class User extends Connection
 {
     private $name;
@@ -16,6 +23,13 @@ class User extends Connection
         Connection::class;
     }
 
+    /**
+     * Pega um usuário do banco,
+     * a partir do e-mail e senha
+     * para realizar o login
+     * @param string email
+     * @param string password
+     */
     public function getUser($email, $password)
     {
         $sql = 'SELECT * FROM user WHERE email=? AND password=?';
@@ -31,12 +45,22 @@ class User extends Connection
                 $hashed_password = $stmt["password"];
 
                 if (password_verify($stmt["password"], $hashed_password) && $this->getEmail() == $stmt['email']) {
+                    $_SESSION['id'] = $stmt['name'];
                     $_SESSION['userIn'] = true;
+
+                    header('location: index.html');
                 }
             }
         }
     }
 
+    /**
+     * registra o usuário no banco de dados
+     * @param string name
+     * @param string email
+     * @param string password
+     * 
+     */
     public function registerUser($name, $email, $password)
     {
         $sql = 'INSERT INTO user (name, email, password) VALUES (:name, :email, :password)';
@@ -50,8 +74,8 @@ class User extends Connection
             $prep_pass = password_hash($password, PASSWORD_DEFAULT);
 
             if($stmt->execute()){
-                // Redirect to login page
-                header("location: login.php");
+                // Redireciona para a página de login
+                header("location: login.html");
             } else{
                 echo "Opa! Algo deu errado na transação do banco de dados. Tente novamente.";
             }

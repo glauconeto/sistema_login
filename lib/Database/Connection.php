@@ -6,6 +6,9 @@ namespace App\Database;
 use PDO;
 use PDOException;
 
+/**
+ * Classe de conexão com o banco de dados
+ */
 abstract class Connection
 {
     protected $connect;
