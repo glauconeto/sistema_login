@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Database\Connection;
+use PDO;
 
 class User extends Connection
 {
@@ -21,6 +22,7 @@ class User extends Connection
         $sql = 'SELECT * FROM user WHERE email=? AND password=?';
         $stmt = $this->connect->prepare($sql);
 
+        // Vincula as variáveis ​​à instrução preparada como parâmetros
         $stmt->bindValue(1, $email);
         $stmt->bindValue(2, $password);
         $stmt->execute();
@@ -36,9 +38,26 @@ class User extends Connection
         }
     }
 
-    public function registerUser($email, $password)
+    public function registerUser($name, $email, $password)
     {
-        
+        $sql = 'INSERT INTO user (name, email, password) VALUES (:name, :email, :password)';
+
+        if ($stmt = $this->connect->prepare($sql)) {
+            // Vincula variáveis ​​à instrução preparada como parâmetros
+            $stmt->bindValue(1, $name, PDO::PARAM_STR);
+            $stmt->bindValue(2, $email, PDO::PARAM_STR);
+            $stmt->bindValue(3, $password, PDO::PARAM_STR);
+
+            $prep_pass = password_hash($password, PASSWORD_DEFAULT);
+
+            if($stmt->execute()){
+                // Redirect to login page
+                header("location: login.php");
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
     }
 
     public function getName()
