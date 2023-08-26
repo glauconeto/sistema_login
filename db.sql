@@ -1,4 +1,4 @@
-CREATE DATABASE simple_login;
+CREATE DATABASE sistema_login;
 
 CREATE TABLE public.user (
     id BIGSERIAL PRIMARY KEY,
