@@ -38,7 +38,7 @@ class User extends Connection
 
     public function registerUser($email, $password)
     {
-
+        
     }
 
     public function getName()
