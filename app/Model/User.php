@@ -16,7 +16,6 @@ class User extends Connection
         Connection::class;
     }
 
-
     public function getUser($email, $password)
     {
         $sql = 'SELECT * FROM user WHERE email=? AND password=?';
