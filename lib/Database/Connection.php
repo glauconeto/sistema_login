@@ -8,14 +8,14 @@ use PDOException;
 
 abstract class Connection
 {
-    protected $conexao;
+    protected $connect;
 
     public function __construct()
     {
         try {
             $conn = "pgsql:host=" . $_ENV['db']['host'] . 'post=5432;' . ";dbname=" . $_ENV['db']['database'];
     
-            $this->conexao = new PDO($conn, $_ENV['db']['user'], $_ENV['db']['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+            $this->connect = new PDO($conn, $_ENV['db']['user'], $_ENV['db']['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
         } catch (PDOException $e) {
             die($e->getMessage());
         }
