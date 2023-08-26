@@ -15,10 +15,6 @@ class LoginController extends Controller
      */
     public static function index()
     {
-        // include './app/View/index.html';
-        // if (isset($_SESSION['userIn'])) {
-        //     parent::render('login');
-        // }
 
         parent::render('index');
         
@@ -41,7 +37,7 @@ class LoginController extends Controller
                 $_SESSION['id'] = $user->getName();
                 $_SESSION['userIn'] = true;
     
-                // header('location: index.');
+                // header('location: ./index');
             } else {
                 $error = 'Erro ao fazer login, tente novamente.'; 
             }
