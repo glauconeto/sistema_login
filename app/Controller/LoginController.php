@@ -11,34 +11,44 @@ use App\Model\User;
 class LoginController extends Controller
 {
     /**
-     * Método index para renderizar a página principal
+     * Método index que renderiza a página principal
      */
-    public function index()
-    {        
-        parent::render('index');
+    public static function index()
+    {
+        // include './app/View/index.html';
+        // if (isset($_SESSION['userIn'])) {
+        //     parent::render('login');
+        // }
 
-        session_start();
+        parent::render('index');
+        
+        // session_start();
         $_SESSION['userIn'] = false;
     }
     
     /**
      * Método para fazer login no sistema
      */
-    public function login()
+    public static function login()
     {
         try {
             $user = new User();
-
             parent::render('login');
 
-            $this->testParams();
+            self::testParams();
 
-            $user->getUser($user->getEmail(), $user->getPassword());
+            if ($user->getUser($user->getEmail(), $user->getPassword())) {
+                $_SESSION['id'] = $user->getName();
+                $_SESSION['userIn'] = true;
+    
+                // header('location: index.');
+            } else {
+                $error = 'Erro ao fazer login, tente novamente.'; 
+            }
 
-            header('location: index.php');
         } catch (\Exception $e) {
             //throw $e;
-            header('Location: http://localhost:8000');
+            $error = 'Erro ao fazer login, tente novamente.';
         }
     }
 
@@ -46,18 +56,20 @@ class LoginController extends Controller
      * Registra o usuário com os parâmetros passados
      * na requisição
      */
-    public function registerUser()
+    public static function registerUser()
     {
         try {
             $user = new User();
             parent::render('register');
             
-            $this->testParams();
-            
+            self::testParams();
+
             $user->setName($_POST['name']);
             $user->setEmail($_POST['email']);
+            $user->setPassword($_POST['password']);
             $user->registerUser($user->getName(), $user->getEmail(), $user->getPassword());
 
+            $_SESSION['userIn'] = true;
             header('location: login.php');
         } catch (\Exception $e) {
             //throw $e;
@@ -69,21 +81,20 @@ class LoginController extends Controller
      * Verifica os parâmetros passados na requisição antes de processar
      * a inserção no banco
      */
-    public function testParams()
+    public static function testParams()
     {
         $user = new User();
-        $error[] = [];
 
         // Verifica se o campo de e-mail não está em branco 
         if (empty(trim($_POST["email"]))) {
-            $error['email'] = "Erro de digitação no campo e-mail.";
+            $error = "Campo e-mail precisa estar preenchido.";
         } else {
             $user->setEmail(trim($_POST['email']));
         }
         
         // Verifica se o campo de senha não está em branco 
         if (empty(trim($_POST["password"]))) {
-            $error['password'] = "Erro de digitação no campo senha.";
+            $error = "Campo senha precisa estar preenchido.";
         } else {
             $user->setPassword($_POST['password']);
         }

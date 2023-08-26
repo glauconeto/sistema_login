@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Início | Sistema de login e registro</title>
-    <link rel="stylesheet" href="assets/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="./assets/css/bulma.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -31,6 +32,7 @@
       
           <div class="navbar-end">
             <div class="navbar-item">
+              <!-- <php if(!isset($_SESSION['id'])): ?> -->
               <div class="buttons">
                 <a class="button is-primary" href="./register.html">
                   <strong>Registre-se</strong>
@@ -39,6 +41,12 @@
                   Entrar
                 </a>
               </div>
+              <!-- <php else: ?>
+              <div class="buttons">
+                <a class="button is-primary"><php $_SESSION['id'] ?></a>
+                <a class="button is-light" href="./logout">Sair</button> -->
+              </div>
+              <!-- <php endif ?> -->
             </div>
           </div>
         </div>
@@ -46,7 +54,7 @@
     <section class="section">
         <div class="container">
             <h1 class="title">Sistema de login e cadastro de usuários.</h1>
-            <p class="subtitle">Seja bem-vindo ao sistema de login / registro de usuários. Utilize os botões do menu para realizar uma ação.</p>
+            <p class="subtitle">Seja bem-vindo <!-- COLOCAR NOME DE USUARIO --> ao sistema de login / registro de usuários. Utilize os botões do menu para realizar uma ação.</p>
         </div>
     </section>
   </body>

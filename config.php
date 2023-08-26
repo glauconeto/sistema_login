@@ -1,7 +1,9 @@
 <?php
 
-define('BASEDIR', dirname(__FILE__, 2));
+define('BASEDIR', dirname(__FILE__, 0));
 define('VIEWS', BASEDIR . '/app/View/');
+
+$_ENV['VIEWS'] = 'app/View/';
 
 $_ENV['db']['host'] = 'localhost';
 $_ENV['db']['user'] = 'neto';

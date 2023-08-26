@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Database\Connection;
+use Lib\Database\Connection;
 use PDO;
 
 /**
@@ -45,10 +45,7 @@ class User extends Connection
                 $hashed_password = $stmt["password"];
 
                 if (password_verify($stmt["password"], $hashed_password) && $this->getEmail() == $stmt['email']) {
-                    $_SESSION['id'] = $stmt['name'];
-                    $_SESSION['userIn'] = true;
-
-                    header('location: index.html');
+                    return true;
                 }
             }
         }
@@ -70,8 +67,6 @@ class User extends Connection
             $stmt->bindValue(1, $name, PDO::PARAM_STR);
             $stmt->bindValue(2, $email, PDO::PARAM_STR);
             $stmt->bindValue(3, $password, PDO::PARAM_STR);
-
-            $prep_pass = password_hash($password, PASSWORD_DEFAULT);
 
             if($stmt->execute()){
                 // Redireciona para a página de login
@@ -110,6 +105,6 @@ class User extends Connection
 
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 }

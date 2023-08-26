@@ -2,26 +2,27 @@
 
 namespace App\Controller;
 
+define('BASEDIR', dirname(__FILE__, 2));
+define('VIEWS', BASEDIR . '/View/');
 /**
  * Classe abstrata de Controller
  */
 abstract class Controller
 {
+
     /**
      * Método de renderização que utiliza uma view para 
      * renderizar como View do sistema
      */
     protected static function render($view)
     {
-        $env = parse_ini_file('.env');
-        $views = $env['VIEWS'];
-
-        $arquivo_view = $views . $view . ".html";
+        $arquivo_view = VIEWS . $view . ".html";
 
         if (file_exists($arquivo_view)) {
             include $arquivo_view;
         } else {
-            exit('Arquivo da View não encontrado. Arquivo: ' . $view);
+            // echo $arquivo_view;
+            exit(' Arquivo da View não encontrado. Arquivo: ' . $arquivo_view);
         }
     }
 }

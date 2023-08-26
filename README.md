@@ -12,7 +12,7 @@ Sistema proposto: Plataforma de login e cadastro de usuários. Feito com:
 Projeto feito com sistema de versionamentos, Git.
 
 Páginas:
-- index: página inicial com informações e menu com botões de login e cadastro
+- index: página inicial com informações e menu com botões de login e cadastro.
 - login: formulário de usuários com e-mail e senha.
 - registro: formulário de cadastro de usuário com nome, e-mail e senha.
 
