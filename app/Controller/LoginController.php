@@ -81,6 +81,13 @@ class LoginController extends Controller
     {
         $user = new User();
 
+        // Verifica se o campo de e-mail não está em branco
+        if (empty(trim($_POST['name']))) {
+            $error = "Campo nome precisa estar preenchido.";
+        } else {
+            $user->setName(trim($_POST['name']));
+        }
+
         // Verifica se o campo de e-mail não está em branco 
         if (empty(trim($_POST["email"]))) {
             $error = "Campo e-mail precisa estar preenchido.";

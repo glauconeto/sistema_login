@@ -45,31 +45,31 @@
         </div>
     </nav>
     <section class="section">
-        <div class="container">
-            <form class="box">
-              <h3>Registro de usuário</h3>
-                <div class="field">
-                <label class="label">E-mail</label>
-                <div class="control">
-                    <input class="input" type="email" placeholder="Digie aqui seu e-mail:">
-                </div>
-                </div>
+      <div class="container">
+        <form class="box" method="post">
+          <div class="field">
+            <label class="label">Nome</label>
+            <div class="control">
+              <input class="input" type="text" name="name" placeholder="Digite seu nome">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">E-mail</label>
+            <div class="control">
+              <input class="input" type="email" name="email" placeholder="Digite seu e-mail">
+            </div>
+          </div>
 
-                <div class="field">
-                <label class="label">Senha</label>
-                <div class="control">
-                    <input class="input" type="password" placeholder="Digite aqui sua senha">
-                </div>
-                </div>
+          <div class="field">
+            <label class="label">Senha</label>
+            <div class="control">
+              <input class="input" type="password" name="password" placeholder="Digite sua senha">
+            </div>
+          </div>
 
-                <button class="button is-primary" type="submit">Entrar</button>
-                <div class="buttons pt-2">
-                    <a class="button is-warning" href="./login">
-                        Já tem conta? Entre
-                    </a>
-                </div>
-            </form>
-        </div>
-      </section>
+          <button class="button is-primary" type="submit">Registrar</button>
+        </form>      
+      </div>
+    </section>
   </body>
 </html>

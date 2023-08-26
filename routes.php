@@ -1,6 +1,5 @@
 <?php
 
-use App\Controller\Controller;
 use App\Controller\LoginController;
 use App\Controller\LogoutController;
 

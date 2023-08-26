@@ -60,20 +60,19 @@ class User extends Connection
      */
     public function registerUser($name, $email, $password)
     {
-        $sql = 'INSERT INTO user (name, email, password) VALUES (:name, :email, :password)';
+        $sql = 'INSERT INTO usuario (nome, email, senha) VALUE (?, ?, ?)';
 
-        if ($stmt = $this->connect->prepare($sql)) {
-            // Vincula variáveis ​​à instrução preparada como parâmetros
-            $stmt->bindValue(1, $name, PDO::PARAM_STR);
-            $stmt->bindValue(2, $email, PDO::PARAM_STR);
-            $stmt->bindValue(3, $password, PDO::PARAM_STR);
+        $stmt = $this->connect->prepare($sql);
+        // Vincula variáveis ​​à instrução preparada como parâmetros
+        $stmt->bindValue(1, $name, PDO::PARAM_STR);
+        $stmt->bindValue(2, $email, PDO::PARAM_STR);
+        $stmt->bindValue(3, $password, PDO::PARAM_STR);
 
-            if($stmt->execute()){
-                // Redireciona para a página de login
-                header("location: login.html");
-            } else{
-                echo "Opa! Algo deu errado na transação do banco de dados. Tente novamente.";
-            }
+        if ($stmt->execute()) {
+            // Redireciona para a página de login
+            header("location: login.html");
+        } else {
+            echo "Opa! Algo deu errado na transação do banco de dados. Tente novamente.";
         }
 
     }
