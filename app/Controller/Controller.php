@@ -9,17 +9,18 @@ abstract class Controller
         $env = parse_ini_file('.env');
         $views = $env['VIEWS'];
 
-        $arquivo_view = $views . $view . ".php";
+        $arquivo_view = $views . $view . ".html";
 
-        if(file_exists($arquivo_view))
+        if (file_exists($arquivo_view)) {
             include $arquivo_view;
-        else
+        } else {
             exit('Arquivo da View não encontrado. Arquivo: ' . $view);
+        }
     }
 
     protected static function isAuthenticated()
     {
-        if(!isset($_SESSION['usuario_logado']))
+        if(!isset($_SESSION['userIn']))
             header("location: /login");
     }
 }
