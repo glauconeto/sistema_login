@@ -7,8 +7,11 @@ use App\Model\User;
 class LoginController extends Controller
 {
     public function index()
-    {
-        
+    {        
+        parent::render('index');
+
+        session_start();
+        $_SESSION['userIn'] = false;
     }
     
     public function login()

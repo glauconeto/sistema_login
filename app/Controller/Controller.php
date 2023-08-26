@@ -4,7 +4,7 @@ namespace App\Controller;
 
 abstract class Controller
 {
-    protected static function render($view, $model = null)
+    protected static function render($view)
     {
         $env = parse_ini_file('.env');
         $views = $env['VIEWS'];

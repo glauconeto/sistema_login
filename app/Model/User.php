@@ -54,7 +54,7 @@ class User extends Connection
                 // Redirect to login page
                 header("location: login.php");
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Opa! Algo deu errado na transação do banco de dados. Tente novamente.";
             }
         }
 
