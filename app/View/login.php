@@ -1,3 +1,9 @@
+<?php
+
+// $_SESSION['error'] = '';
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -10,8 +16,11 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="./">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+          <a class="navbar-item" href="/">
+            <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
+            <a class="navbar-item" href="./">
+              SISTEMA
+            </a>
           </a>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -33,10 +42,10 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-primary" href="./register">
+                <a class="button is-primary" href="/register">
                   <strong>Registre-se</strong>
                 </a>
-                <a class="button is-light" href="./login">
+                <a class="button is-light" href="/login">
                   Entrar
                 </a>
               </div>
@@ -51,21 +60,27 @@
                 <div class="field">
                 <label class="label">E-mail</label>
                 <div class="control">
-                    <input class="input" type="email" placeholder="Digie aqui seu e-mail">
+                    <input class="input" type="email" name="email" placeholder="Digie aqui seu e-mail">
                 </div>
                 </div>
 
                 <div class="field">
                 <label class="label">Senha</label>
                 <div class="control">
-                    <input class="input" type="password" placeholder="Digite aqui sua senha">
+                    <input class="input" type="password" name="password" placeholder="Digite aqui sua senha">
                 </div>
+                <?php if (isset($_SESSION['error'])): ?>
+                <div class="control">
+                    <?php $_SESSION ?>
+                    <label class="label"><?= $_SESSION['error'] ?></label>
+                </div>
+                <?php endif ?>
                 </div>
 
 
                 <button class="button is-primary" type="submit">Entrar</button>
                 <div class="buttons pt-2">
-                    <a class="button is-warning" href="./register">
+                    <a class="button is-warning" href="/register">
                         Não possui conta? Registre-se
                     </a>
                 </div>

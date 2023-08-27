@@ -15,11 +15,20 @@ switch ($url) {
         LoginController::login();
         break;
 
+    case '/profile':
+        LoginController::profile();
+        break;
+
+    case '/register/save':
+        LoginController::saveRegisterForm();
+        break;
+
     case '/register':
-        LoginController::registerUser();
+        LoginController::loadRegisterForm();
         break;
     case '/logout':
         LogoutController::logout();
+        break;
 
     default:
         ErrorController::index();

@@ -10,8 +10,8 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="./">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+          <a class="navbar-item" href="/">
+            <p>SMART IN TECH</p>
           </a>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -22,13 +22,7 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" href="./">
-              Início
-            </a>
-              </div>
-            </div>
-          </div>
+
 
           <div class="navbar-end">
             <div class="navbar-item">
@@ -46,7 +40,7 @@
     </nav>
     <section class="section">
       <div class="container">
-        <form class="box" action="/register" method="post">
+        <form class="box" action="/register/save" method="post">
           <h3 class="title is-3">Registrar usuário</h3>
           <div class="field">
             <label class="label">Nome</label>
@@ -69,6 +63,11 @@
           </div>
 
           <button class="button is-primary" type="submit">Registrar</button>
+          <div class="buttons pt-2">
+            <a class="button is-warning" href="/login">
+                Já possui conta? Entre
+            </a>
+          </div>
         </form>      
       </div>
     </section>

@@ -3,6 +3,9 @@
 namespace App\Model;
 
 use Lib\Database\Connection;
+use Lib\Database\LoginDao;
+use Lib\Database\UserDao;
+use PDO;
 
 /**
  * Model da aplicação
@@ -13,14 +16,19 @@ use Lib\Database\Connection;
  */
 class User extends Connection
 {
+    private $id;
     private $name;
     private $email;
     private $password;
+    // protected $connect;
 
-    public function __construct()
-    {
-        Connection::class;
-    }
+    // public function __construct($id = null, $name = null, $email = null, $password = null)
+    // {
+    //     $this->id = $id;
+    //     $this->name = $name;
+    //     $this->email = $email;
+    //     $this->password = $password;
+    // }
 
     /**
      * Pega um usuário do banco,
@@ -29,25 +37,24 @@ class User extends Connection
      * @param string email
      * @param string password
      */
-    public function getUser($email, $password)
+    public function logInUser()
     {
-        $sql = 'SELECT * FROM user WHERE email=? AND password=?';
-        $stmt = $this->connect->prepare($sql);
+        $dao = new LoginDao();
 
-        // Vincula as variáveis ​​à instrução preparada como parâmetros
-        $stmt->bindValue(1, $email);
-        $stmt->bindValue(2, $password);
-        $stmt->execute();
+        $userData = $dao->selectUser($this->getEmail(), $this->getPassword());
 
-        if ($stmt->rowCount()) {
-            if ($stmt->fetch()) {
-                $hashed_password = $stmt["password"];
+        $this->setId($userData['id']);
+        $this->setName($userData['name']);
+        // var_dump($userData);
 
-                if (password_verify($stmt["password"], $hashed_password) && $this->getEmail() == $stmt['email']) {
-                    return true;
-                }
-            }
-        }
+        // if (is_object($userData)) {
+        //     return $userData;
+        // } else {
+        //     echo 'Usuário não encontrado!';
+        //     return null;
+        // }
+
+        return $this;
     }
 
     /**
@@ -57,24 +64,34 @@ class User extends Connection
      * @param string password
      * 
      */
-    public function registerUser($name, $email, $password)
+    public function registerUser()
     {
-        $sql = 'INSERT INTO user (name, email, senha) VALUES (?, ?, ?)';
+        $dao = new LoginDao();
 
-        $stmt = $this->connect->prepare($sql);
-        var_dump($stmt);
-        // Vincula variáveis ​​à instrução preparada como parâmetros
-        $stmt->bindValue(1, $name);
-        $stmt->bindValue(2, $email);
-        $stmt->bindValue(3, $password);
-
-        if ($stmt->execute()) {
-            // Redireciona para a página de login
-            header("location: login.html");
+        if ($dao->insertUser($this->getName(), $this->getEmail(), $this->getPassword())) {
+            header('location: /login?sucess=true');
         } else {
-            echo "Opa! Algo deu errado na transação do banco de dados. Tente novamente.";
-        }
+            echo 'Erro ao cadastrar';
 
+        }
+    }
+
+    // public function getUserById()
+    // {
+    //     $dao = new UserDao();
+    //     $user = $dao->getUserById($id);
+
+
+    // }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     public function getName()
@@ -102,8 +119,13 @@ class User extends Connection
         return $this->password;
     }
 
-    public function setPassword($password)
+    public function setHashedPassword($password)
     {
         $this->password = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
     }
 }
