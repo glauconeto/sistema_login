@@ -15,7 +15,6 @@ class LoginController extends Controller
      */
     public static function index()
     {
-
         parent::render('index');
         
         // session_start();
@@ -60,15 +59,15 @@ class LoginController extends Controller
             
             self::testParams();
 
-            $user->setName($_POST['name']);
-            $user->setEmail($_POST['email']);
-            $user->setPassword($_POST['password']);
+            // $user->setName($_POST['name']);
+            // $user->setEmail($_POST['email']);
+            // $user->setPassword($_POST['password']);
             $user->registerUser($user->getName(), $user->getEmail(), $user->getPassword());
 
             $_SESSION['userIn'] = true;
             header('location: login.php');
         } catch (\Exception $e) {
-            //throw $e;
+            throw $e;
             header('location: http://localhost:8000');
         }
     }

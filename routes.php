@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\ErrorController;
 use App\Controller\LoginController;
 use App\Controller\LogoutController;
 
@@ -21,6 +22,6 @@ switch ($url) {
         LogoutController::logout();
 
     default:
-        include 'app/View/404.html';
+        ErrorController::index();
         break;
 }

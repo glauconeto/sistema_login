@@ -5,6 +5,6 @@ require 'routes.php';
 
 use App\Controller\LoginController;
 
-$login = new LoginController();
+// $login = new LoginController();
 
-$login->index();
+// $login->index();

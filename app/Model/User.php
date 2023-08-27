@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use Lib\Database\Connection;
-use PDO;
 
 /**
  * Model da aplicação
@@ -60,13 +59,14 @@ class User extends Connection
      */
     public function registerUser($name, $email, $password)
     {
-        $sql = 'INSERT INTO usuario (nome, email, senha) VALUE (?, ?, ?)';
+        $sql = 'INSERT INTO user (name, email, senha) VALUES (?, ?, ?)';
 
         $stmt = $this->connect->prepare($sql);
+        var_dump($stmt);
         // Vincula variáveis ​​à instrução preparada como parâmetros
-        $stmt->bindValue(1, $name, PDO::PARAM_STR);
-        $stmt->bindValue(2, $email, PDO::PARAM_STR);
-        $stmt->bindValue(3, $password, PDO::PARAM_STR);
+        $stmt->bindValue(1, $name);
+        $stmt->bindValue(2, $email);
+        $stmt->bindValue(3, $password);
 
         if ($stmt->execute()) {
             // Redireciona para a página de login
