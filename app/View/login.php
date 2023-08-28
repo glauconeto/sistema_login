@@ -7,6 +7,8 @@
     <title><?= $context['titulo'] ?></title>
     <!-- Utilizado com Bulma css (https://bulma.io) -->
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
+    <!-- Utilizado ícones Font Awesome 4 -->
+    <link rel="stylesheet" href="/app/View//assets/icons/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -40,16 +42,16 @@
     <section class="section">
         <div class="container">
             <form class="box" action="/login" method="post">
-              <h3 class="title is-3">Login</h3>
+              <h3 class="title is-3"><i class="fa fa-user" style="padding-right: 7px;"></i>Login</h3>
                 <div class="field">
-                <label class="label">E-mail</label>
+                <label class="label"><i class="fa fa-envelope" style="padding-right: 7px;" aria-hidden="true"></i>E-mail</label>
                 <div class="control">
                     <input class="input" type="email" name="email" placeholder="Digite aqui seu e-mail">
                 </div>
                 </div>
 
                 <div class="field">
-                <label class="label">Senha</label>
+                <label class="label"><i class="fa fa-key" style="padding-right: 7px;" aria-hidden="true"></i>Senha</label>
                 <div class="control">
                     <input class="input" type="password" name="password" placeholder="Digite aqui sua senha">
                 </div>

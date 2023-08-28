@@ -6,6 +6,8 @@
     <title>Início | Sistema de login e registro</title>
     <!-- Utilizado com Bulma css (https://bulma.io) -->
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
+    <!-- Utilizado ícones Font Awesome 4 -->
+    <link rel="stylesheet" href="/app/View//assets/icons/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -27,8 +29,9 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <?php if(!isset($_SESSION['id'])): ?>
-              <div class="buttons">
-                <a class="button is-primary" href="/register">
+                <div class="buttons">
+                  <a class="button is-primary" href="/register">
+                  <i class="fa fa-user" aria-hidden="true" style="padding-right: 4px;"></i>
                   <strong>Registre-se</strong>
                 </a>
                 <a class="button is-light" href="/login">
@@ -40,7 +43,7 @@
                   <a class="navbar-link">
                   <?php echo $context['user']->getName() ?>
                   </a>
-
+                  
                   <div class="navbar-dropdown">
                     <a class="navbar-item" href="/profile">
                       Perfil
@@ -50,16 +53,16 @@
                     </a>
                   </div>
                 </div>
-              <?php endif ?>
+                <?php endif ?>
             </div>
           </div>
         </div>
     </nav>
     <section class="section">
         <div class="container">
-            <h1 class="title"><?php echo $context['titulo'] ?></h1>
-            <p class="subtitle"><?php echo $context['subtitulo'] ?></p>
+          <h1 class="title"><?php echo $context['titulo'] ?></h1>
+          <p class="subtitle"><?php echo $context['subtitulo'] ?></p>
         </div>
-    </section>
-  </body>
+      </section>
+    </body>
 </html>
