@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Model\User;
-use Lib\Database\LoginDao;
 use Lib\Database\UserDao;
 
 /**
@@ -18,7 +17,7 @@ class LoginController extends Controller
     public static function index()
     {
         session_start();
-        $context['titulo'] = 'SMART INT TECH - Sistema de login e registro.';
+        $context['titulo'] = 'SMART IN TECH - Sistema de login e registro.';
         
         if ($_SESSION['userIn'] == true){
             $userDao = new UserDao();
@@ -63,7 +62,9 @@ class LoginController extends Controller
                 $_SESSION['error'] = $error;
             }
         }
-        parent::render('login');
+        $context['titulo'] = 'Login - Sistema de login e registro';
+
+        parent::render('login', $context);
     }
 
     /**
@@ -79,12 +80,14 @@ class LoginController extends Controller
             $userDao = new UserDao();
             $user = $userDao->getUserById($_SESSION['id']);
             $context['user'] = $user;
+            $context['titulo'] = 'Perfil de usuário - Sistema de login e registro';
             if (isset($user)){
                 parent::render('profile', $context);
             } else {
                 echo 'Não pegou o user.';
             }
         } else {
+
             parent::render('login');
         }
     }
