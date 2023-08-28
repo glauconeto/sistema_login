@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Lib\Database;
 
 use PDO;
@@ -8,6 +7,8 @@ use PDOException;
 
 /**
  * Classe de conexão com o banco de dados
+ * que será usada nas classes DAO para 
+ * realizar ações com o banco.
  */
 class Connection 
 {
@@ -18,6 +19,11 @@ class Connection
     private $password = 'netozicadb';
     private $database = 'sistema_login';
 
+    /**
+     * Método construtor que irá configurar string de conexão
+     * e realizá-la caso não ocorra nenhum erro, senão é retornado
+     * um erro.
+     */
     public function __construct()
     {
         try {

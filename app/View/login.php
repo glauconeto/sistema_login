@@ -1,9 +1,3 @@
-<?php
-
-// $_SESSION['error'] = '';
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -76,7 +70,6 @@
                 </div>
                 <?php endif ?>
                 </div>
-
 
                 <button class="button is-primary" type="submit">Entrar</button>
                 <div class="buttons pt-2">

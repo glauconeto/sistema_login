@@ -62,6 +62,14 @@
             </div>
           </div>
 
+          <?php if (isset($_SESSION['error'])): ?>
+            <div class="control">
+                <?php $_SESSION ?>
+                <label class="label"><?= $_SESSION['error'] ?></label>
+            </div>
+            <?php endif ?>
+          </div>
+
           <button class="button is-primary" type="submit">Registrar</button>
           <div class="buttons pt-2">
             <a class="button is-warning" href="/login">

@@ -4,39 +4,59 @@ namespace Lib\Database;
 
 use PDO;
 
+/**
+ * Classe de Login utilizando Data Acces Object para
+ * realizar operações do sistema com o banco de dados.
+ */
 class LoginDao extends Connection
 {
+    /**
+     * Método construtor que irá abrir uma conexão
+     * com o banco.
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * Método de seleção de usuário no banco, 
+     * @param string email
+     * @param string password
+     * @return object row
+     */
     public function selectUser($email, $password)
     {
         $sql = 'SELECT * FROM public.user WHERE email=:email';
         $stmt = $this->pdo->prepare($sql);
 
-        // Vincula as variáveis ​​à instrução preparada como parâmetros
+        // Vincula a variável ​​à instrução preparada como parâmetros
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         
         if ($stmt->execute()) {
-            // Check if username exists, if yes then verify password
+            // Checa se o e-mail existe, se sim então verifica a senha.
             if ($stmt->rowCount() == 1) {
                 if($row = $stmt->fetch()) {
                     $hashed_password = $row['password'];
-                    
-                    if (password_verify($password, $hashed_password)) {
 
+                    if (password_verify($password, $hashed_password)) {
                         return $row;
                     } else {
-                        // Password is not valid, display a generic error message
-                        echo "Invalid username or password.";
+                        // Se não é válida, então retorna uma mensagem de erro.
+                        echo "E-mail ou senha inválidos.";
                     }
                 }
             }
         }
     }
 
+    /**
+     * Método de inserir usuário no banco.
+     * @param string name
+     * @param string email
+     * @param string password
+     * @return boolean 
+     */
     public function insertUser($name, $email, $password)
     {
         $sql = "INSERT INTO public.user (name, email, password) VALUES (:name, :email, :password)";

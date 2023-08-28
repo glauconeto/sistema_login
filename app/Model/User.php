@@ -4,15 +4,11 @@ namespace App\Model;
 
 use Lib\Database\Connection;
 use Lib\Database\LoginDao;
-use Lib\Database\UserDao;
-use PDO;
 
 /**
- * Model da aplicação
- *
- * Aqui vai a regra geral de todo o banco de dados, que irá ser utilizado pelo Controller.
- *
- * 
+ * Model de usuário da aplicação.
+ * Aqui vai a regra geral de todo o banco de dados, 
+ * que irá ser utilizado pelo Controller.
  */
 class User extends Connection
 {
@@ -20,22 +16,13 @@ class User extends Connection
     private $name;
     private $email;
     private $password;
-    // protected $connect;
-
-    // public function __construct($id = null, $name = null, $email = null, $password = null)
-    // {
-    //     $this->id = $id;
-    //     $this->name = $name;
-    //     $this->email = $email;
-    //     $this->password = $password;
-    // }
 
     /**
-     * Pega um usuário do banco,
-     * a partir do e-mail e senha
-     * para realizar o login
+     * Pega um usuário do banco, a partir do e-mail e senha.
+     * para realizar o login.
      * @param string email
      * @param string password
+     * @return object this
      */
     public function logInUser()
     {
@@ -45,24 +32,16 @@ class User extends Connection
 
         $this->setId($userData['id']);
         $this->setName($userData['name']);
-        // var_dump($userData);
-
-        // if (is_object($userData)) {
-        //     return $userData;
-        // } else {
-        //     echo 'Usuário não encontrado!';
-        //     return null;
-        // }
 
         return $this;
     }
 
     /**
-     * registra o usuário no banco de dados
+     * Registra o usuário no banco de dados.
      * @param string name
      * @param string email
      * @param string password
-     * 
+     * @return redirect
      */
     public function registerUser()
     {
@@ -75,14 +54,6 @@ class User extends Connection
 
         }
     }
-
-    // public function getUserById()
-    // {
-    //     $dao = new UserDao();
-    //     $user = $dao->getUserById($id);
-
-
-    // }
 
     public function getId()
     {
@@ -119,6 +90,11 @@ class User extends Connection
         return $this->password;
     }
 
+    /**
+     * Método modificador set de password
+     * fazendo hash da senha passada na requisição
+     * @param string password
+     */
     public function setHashedPassword($password)
     {
         $this->password = password_hash($password, PASSWORD_DEFAULT);

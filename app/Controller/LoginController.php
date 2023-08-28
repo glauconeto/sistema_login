@@ -13,14 +13,13 @@ use Lib\Database\UserDao;
 class LoginController extends Controller
 {
     /**
-     * Método index que renderiza a página principal
+     * Método index que renderiza a página principal do sistema
      */
     public static function index()
     {
         session_start();
-        // $_SESSION['userIn'] = false;
-        // $_SESSION['id'] = null;
         $context['titulo'] = 'SMART INT TECH - Sistema de login e registro.';
+        
         if ($_SESSION['userIn'] == true){
             $userDao = new UserDao();
             $user = $userDao->getUserById($_SESSION['id']);
@@ -30,14 +29,13 @@ class LoginController extends Controller
             $context['subtitulo'] = 'Você precisa realizar o login para acessar sistema.';
         }
         
-        $dir = dirname(__DIR__, 1);
-
-        // include $dir . '/View/index.php';
         parent::render('index', $context);
     }
     
     /**
-     * Método para fazer login no sistema
+     * Método para fazer login no sistema,
+     * primeiro fazendo um teste dos parâmetros 
+     * e iniciando a sessão caso não dê nenhum erro.
      */
     public static function login()
     {
@@ -45,16 +43,13 @@ class LoginController extends Controller
             try {
     
                 $user = self::testLoginParams();
-                // var_dump($user);
     
                 if ($user->logInUser()) {
                     session_start();
                     $_SESSION['id'] = $user->getId();
                     $_SESSION['userIn'] = true;
-                    // $context['id'] = $user->getId();
 
                     header('location: /');
-                    // parent::render('logged', $context);
                 } else {
                     $error = 'Erro ao fazer login, tente novamente.'; 
                 }
@@ -67,11 +62,15 @@ class LoginController extends Controller
             if (isset($error)) {
                 $_SESSION['error'] = $error;
             }
-            parent::render('login');
         }
-
+        parent::render('login');
     }
 
+    /**
+     * Método de profile onde o usuário poderá ver suas
+     * informações inseridas registro, em uma página de
+     * perfil.
+     */
     public static function profile()
     {
         session_start();
@@ -91,37 +90,18 @@ class LoginController extends Controller
     }
 
     /**
-     * Registra o usuário com os parâmetros passados
-     * na requisição
+     * Método de carregamento da view de registro,
+     * com o formulário.
      */
-    // public static function registerUser()
-    // {
-    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //         try {
-    //             parent::render('register');
-                
-    //             $user = self::testRegisterParams();
-    
-    //             $user->registerUser();
-    
-    //             $_SESSION['userIn'] = true;
-    //             header('location: /login');
-    //         } catch (\Exception $e) {
-    //             throw $e;
-    //             header('location: /');
-    //         }
-    //     } else {
-    //         // parent::render('register'');
-    //         echo 'Não é post';
-    //     }
-
-    // }
-
     public static function loadRegisterForm()
     {
         parent::render('register');
     }
 
+    /**
+     * Método de salvar informações do formulário de registro
+     * de usuário.
+     */
     public static function saveRegisterForm()
     {
         try {
@@ -138,16 +118,19 @@ class LoginController extends Controller
     }
     
     /**
-     * Verifica os parâmetros passados na requisição antes de processar
-     * a inserção no banco
+     * Método de verificação, com os parâmetros
+     * passados na requisição antes de processar
+     * a inserção no banco.
      */
     public static function testRegisterParams()
     {
         $user = new User();
 
-        // Verifica se o campo de e-mail não está em branco
+        // Verifica se o campo de nome não está em branco
         if (empty(trim($_POST["name"]))) {
             $error = "Campo nome precisa estar preenchido.";
+
+            return $_SESSION['error'] = $error;
         } else {
             $user->setName(trim($_POST['name']));
         }
@@ -155,6 +138,8 @@ class LoginController extends Controller
         // Verifica se o campo de e-mail não está em branco 
         if (empty(trim($_POST["email"]))) {
             $error = "Campo e-mail precisa estar preenchido.";
+
+            return $_SESSION['error'] = $error;
         } else {
             $user->setEmail(trim($_POST['email']));
         }
@@ -162,6 +147,8 @@ class LoginController extends Controller
         // Verifica se o campo de senha não está em branco 
         if (empty(trim($_POST["password"]))) {
             $error = "Campo senha precisa estar preenchido.";
+
+            return $_SESSION['error'] = $error;
         } else {
             $user->setHashedPassword($_POST['password']);
         }
@@ -169,6 +156,10 @@ class LoginController extends Controller
         return $user;
     }
 
+    /**
+     * Método de verificação dos parâmetros
+     * passados na requisição.
+     */
     public static function testLoginParams()
     {
         $user = new User();
@@ -176,6 +167,8 @@ class LoginController extends Controller
         // Verifica se o campo de e-mail não está em branco 
         if (empty(trim($_POST["email"]))) {
             $error = "Campo e-mail precisa estar preenchido.";
+
+            return $_SESSION['error'] = $error;
         } else {
             $user->setEmail(trim($_POST['email']));
         }
@@ -183,6 +176,8 @@ class LoginController extends Controller
         // Verifica se o campo de senha não está em branco 
         if (empty(trim($_POST["password"]))) {
             $error = "Campo senha precisa estar preenchido.";
+
+            return $_SESSION['error'] = $error;
         } else {
             $user->setPassword($_POST['password']);
         }
