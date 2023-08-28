@@ -15,5 +15,18 @@ Páginas:
 - index: página inicial com informações e menu com botões de login e cadastro.
 - login: formulário de usuários com e-mail e senha.
 - registro: formulário de cadastro de usuário com nome, e-mail e senha.
+- perfil: página de informações com dados do usuário logado.
 
 Ps: Se houver algo que falte a partir do projeto proposto, me comunicar para completar com o que falta.
+
+### Requisitos
+1. Composer
+2. PHP 7+
+3. Postgres
+
+### Como executar o projeto
+
+1. Na raiz do projeto, execute: `composer install` para verificar dependências e configurações.
+2. Com o arquivo db.sql, criar base de dados no Postgres.
+3. Na raiz do projeto, execute: `php -S localhost:8000` para rodar o servidor PHP.
+4. Abrir no navegador: http://localhost:8000
