@@ -1,24 +1,17 @@
-<?php 
-
-// echo var_dump($_SESSION)
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Início | Sistema de login e registro</title>
+    <!-- Utilizado com Bulma css (https://bulma.io) -->
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="./">
-            <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
-            <a class="navbar-item" href="./">
+          <a class="navbar-item" href="/">
+            <a class="navbar-item" href="/">
               Smart In Tech
             </a>
           </a>

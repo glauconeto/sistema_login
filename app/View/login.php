@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login | Sistema de login e registro</title>
+    <title><?= $context['titulo'] ?></title>
+    <!-- Utilizado com Bulma css (https://bulma.io) -->
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="/">
-            <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
             <a class="navbar-item" href="./">
-              SISTEMA
+              SMART IN TECH
             </a>
           </a>
 
@@ -23,16 +23,6 @@
             <span aria-hidden="true"></span>
           </a>
         </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" href="./">
-              Início
-            </a>
-              </div>
-            </div>
-          </div>
-
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
@@ -54,7 +44,7 @@
                 <div class="field">
                 <label class="label">E-mail</label>
                 <div class="control">
-                    <input class="input" type="email" name="email" placeholder="Digie aqui seu e-mail">
+                    <input class="input" type="email" name="email" placeholder="Digite aqui seu e-mail">
                 </div>
                 </div>
 

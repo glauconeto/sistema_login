@@ -9,15 +9,13 @@ Sistema proposto: Plataforma de login e cadastro de usuários. Feito com:
 - PHP
 - banco de dados Postgresql
 
-Projeto feito com sistema de versionamentos, Git.
+Projeto feito com sistema de versionamentos Git.
 
 Páginas:
 - index: página inicial com informações e menu com botões de login e cadastro.
 - login: formulário de usuários com e-mail e senha.
 - registro: formulário de cadastro de usuário com nome, e-mail e senha.
 - perfil: página de informações com dados do usuário logado.
-
-Ps: Se houver algo que falte a partir do projeto proposto, me comunicar para completar com o que falta.
 
 ### Requisitos
 1. Composer

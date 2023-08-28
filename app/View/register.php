@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registro | Sistema de login e registro</title>
+    <title><?= $context['titulo'] ?></title>
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="/">
-            <p>SMART IN TECH</p>
+            <a class="navbar-item" href="/">
+              SMART IN TECH
+            </a>
           </a>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -20,17 +22,13 @@
             <span aria-hidden="true"></span>
           </a>
         </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-
-
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-primary" href="./register">
+                <a class="button is-primary" href="/register">
                   <strong>Registre-se</strong>
                 </a>
-                <a class="button is-light" href="./login">
+                <a class="button is-light" href="/login">
                   Entrar
                 </a>
               </div>
@@ -62,20 +60,17 @@
             </div>
           </div>
 
-          <?php if (isset($_SESSION['error'])): ?>
-            <div class="control">
-                <?php $_SESSION ?>
-                <label class="label"><?= $_SESSION['error'] ?></label>
-            </div>
-            <?php endif ?>
-          </div>
-
           <button class="button is-primary" type="submit">Registrar</button>
           <div class="buttons pt-2">
             <a class="button is-warning" href="/login">
-                Já possui conta? Entre
+              Já possui conta? Entre
             </a>
           </div>
+          <?php if (isset($_SESSION['error'])): ?>
+            <div class="control">
+                <label class="label"><?= $_SESSION['error'] ?></label>
+            </div>
+          <?php endif ?>
         </form>      
       </div>
     </section>

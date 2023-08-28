@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $context['titulo'] ?></title>
+    <!-- Utilizado com Bulma css (https://bulma.io) -->
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="./">
-            <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
-            <a class="navbar-item" href="./">
+          <a class="navbar-item" href="/">
+            <a class="navbar-item" href="/">
               SMART IN TECH
             </a>
           </a>
@@ -51,11 +51,10 @@
     <section class="section">
         <div class="container">
             <h1 class="title is-1">Dados do usuário logado:</h1>
-
             <br>
 
             <h3 class="subtitle is-2">Seu id de usuário: <?= $context['user']->getId() ?></h3>
-            
+
             <h3 class="subtitle is-2">Seu nome: <?= $context['user']->getName() ?></h3>
 
             <h3 class="subtitle is-2">Seu e-mail: <?= $context['user']->getEmail() ?></h3>

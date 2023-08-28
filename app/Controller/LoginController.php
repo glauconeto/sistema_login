@@ -98,7 +98,8 @@ class LoginController extends Controller
      */
     public static function loadRegisterForm()
     {
-        parent::render('register');
+        $context['titulo'] = 'Registro - Sistema de login e registro';
+        parent::render('register', $context);
     }
 
     /**

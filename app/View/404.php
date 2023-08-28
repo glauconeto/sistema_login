@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Início | Sistema de login e registro</title>
+    <!-- Utilizado com Bulma css (https://bulma.io) -->
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
   </head>
   <body>
