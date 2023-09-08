@@ -28,3 +28,8 @@ Páginas:
 2. Com o arquivo db.sql, criar base de dados no Postgres.
 3. Na raiz do projeto, execute: `php -S localhost:8000` para rodar o servidor PHP.
 4. Abrir no navegador: http://localhost:8000
+
+### Melhorias:
+
+1. Adicionar biblioteca de renderização de views.
+2. Melhorar tratamento de erros.
