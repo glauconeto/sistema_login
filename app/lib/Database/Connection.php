@@ -16,7 +16,7 @@ class Connection
     protected $pdo;
     private $host = '127.0.0.1';
     private $user = 'neto';
-    private $password = 'netozicadb';
+    private $password = '*****';
     private $database = 'sistema_login';
 
     /**
