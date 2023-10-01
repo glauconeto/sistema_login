@@ -20,7 +20,6 @@ class Controller
         $this->twig = new Environment($this->loader);
     }
 
-        
     /**
      * Método de renderização que retorna um arquivo da view,
      * além de poder usar uma variável de contexto para renderizar
