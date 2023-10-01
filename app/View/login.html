@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $context['titulo'] ?></title>
+    <title>{% $context['titulo'] %}</title>
     <!-- Utilizado com Bulma css (https://bulma.io) -->
     <link rel="stylesheet" href="app/View/assets/css/bulma.min.css">
     <!-- Utilizado ícones Font Awesome 4 -->
@@ -55,7 +55,7 @@
                 <div class="control">
                     <input class="input" type="password" name="password" placeholder="Digite aqui sua senha">
                 </div>
-                <?php if (isset($_SESSION['error'])): ?>
+                {% if context['userIn'] %}
                 <div class="control">
                     <?php $_SESSION ?>
                     <label class="label"><?= $_SESSION['error'] ?></label>

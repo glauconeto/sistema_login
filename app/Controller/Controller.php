@@ -2,32 +2,45 @@
 
 namespace App\Controller;
 
-// Contantes usadas para acessar arquivos da view
-define('BASEDIR', dirname(__FILE__, 2));
-define('VIEWS', BASEDIR . '/View/');
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader as Loader;
 
 /**
  * Classe abstrata de Controller que irá ser herdada pelos Controllers
  * para renderizar páginas de view.
  */
-abstract class Controller
+class Controller
 {
+    private $loader;
+    private $twig;
+
+    public function __construct()
+    {
+        $this->loader = new Loader('app/view');
+        $this->twig = new Environment($this->loader);
+    }
+
+        
     /**
      * Método de renderização que retorna um arquivo da view,
      * além de poder usar uma variável de contexto para renderizar
      * variáveis opcionais.
-     * @param string view
-     * @param string context
-     * @return view
+     *
+     * @param  string $view
+     * @param  array $context
+     * @return $content
      */
-    protected static function render($view, $context=null)
+    public function render($view, $context=null)
     {
-        $arquivo_view = VIEWS . $view . ".php";
+        $template = $this->twig->load($view);
+        $content = $template->render($context);
 
-        if (file_exists($arquivo_view)) {
-            include $arquivo_view;
-        } else {
-            exit(' Arquivo da View não encontrado. Arquivo: ' . $arquivo_view);
-        }
+        return $content;
+
+        // if (file_exists($arquivo_view)) {
+        //     include $arquivo_view;
+        // } else {
+        //     exit(' Arquivo da View não encontrado. Arquivo: ' . $arquivo_view);
+        // }
     }
 }

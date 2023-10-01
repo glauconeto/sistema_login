@@ -18,6 +18,7 @@ class LoginController extends Controller
     {
         session_start();
         $context['titulo'] = 'SMART IN TECH - Sistema de login e registro.';
+        $context['userIn'] = $_SESSION['userIn'];
         
         if ($_SESSION['userIn'] == true){
             $userDao = new UserDao();
